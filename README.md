@@ -25,10 +25,10 @@ Da un ejemplo
 
 ## Construido con 
 
-###IDLE (Python 3.7 64-bits)
+### IDLE (Python 3.7 64-bits)
 
 ## Autor 
 
-###Eduardo Ospina Mejia
+### Eduardo Ospina Mejia
 
 
