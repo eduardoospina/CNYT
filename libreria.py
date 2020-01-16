@@ -32,20 +32,6 @@ def fase(a):
     return a[1]
 
 
-    
-
-
-a = (-2,1)
-b = (1,2)
-k = sumacomplejos(a,b)
-prettyprintingc(k)
-prettyprintingc(conjugado(b))
-print(divcomplejos(a,b))
-print(modulo(a))
-print (conversioncap(a))
-print (fase(a))
-def main():
-    return
 
 
 
