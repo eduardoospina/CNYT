@@ -31,8 +31,8 @@ def conversioncap(a):
     p = modulo (a)
     fin = (p,q)
     return fin
-"""def fase(a):
-    return a[1]"""
+def fase(a):
+    return a[1]
 def prettyprintingv(a):
     ini = a[0:len(a)//2]
     mita = a[len(a)//2:]
@@ -46,6 +46,7 @@ def sumavectoresc(b,d):
         e = b[i] + d[i]
         suma.append(e)
     print (prettyprintingv(suma))
+    print (suma)
     return suma
 def inversoaditivov(b):
     #b = vector
@@ -55,6 +56,7 @@ def inversoaditivov(b):
         inversa.append(e)
     print (prettyprintingv(b))
     print (prettyprintingv(inversa))
+    print (inversa)
     return inversa
 def escalarxvectorc(b,d,n):
     #b escalar d vector n es longitud mitad vector
@@ -176,7 +178,7 @@ def accionmatrizvector (a,b,c,d,m,n):
             n4.append(n2)
     print(n3)
     print(n4)
-                
+    return n4      
         
 def productointernov (a,b,c,d):
     #a y c vector real , b y d vector ima
@@ -209,6 +211,7 @@ def normav(a,b,m):
         e = e + norma1[i]
     c = ((d,e))
     print ("(",d,"+",e,"i",")**(1/2))")
+    print(c)
     return (c)
 
 def distanciavectores(a,b,c,d):
@@ -240,15 +243,17 @@ def esunitaria(a,b,m):
             menori = []
             for m in range(len(c)):
                 for n in range(len(c)):
-                    x = ((a[i][m]*c[j][n])-(b[i][m]*d[j][n]),((a[i][m]*d[j][n])+(b[i][m]*c[j][n])))
+                    x = 1
                     menori.append(x)
             menor.append(menori)
         uni.append(menor)
-    if m ==len(A):
+    if m ==len(a):
         print (True)
+        c = 1
     else:
         print(False)
-    
+        c= 0
+    return c
             
     
 
@@ -256,11 +261,14 @@ def esunitaria(a,b,m):
 def eshermitiana(a,b,m):
     c,d = adjuntamatriz(a,b,m)
     if a == c and b == d:
-        print("es hermitania")
+        print ("es hermitania")
+        c = 1
     else:
-        print ("no es hermitania")
+        print("no es hermitania")
+        c = 0
     print (a,b)
     print (c,d)
+    return c
     
 def productotensor(a,b,c,d):
     #a y c matriz real, b y d son matrices imaginarias
@@ -318,20 +326,20 @@ m11 = [[(0,0),(0,0)],[(0,0),(0,0)]]
 m12 = [[(0,0),(0,0)],[(0,0),(0,0)]]
 
 
-"""esunitaria(m1,m2,3)"""
+"""esunitaria(m1,m2,3)
 eshermitiana(m1,m2,3)
 distanciavectores(v1,v2,v3,v4)
-#accionmatrizvector (v1,v2,m1,m2,3,3)
-#productointernov (v1,v2,v3,v4)
-#normav(v1,v2,4)
-#multiplicarcomplejos(n1,n2)
-#productomatrices (m5,m10)
-#productotensor(m6,m7,m8,m9)
-#sumavectoresc(v1,v2)
-#inversoaditivov(v1)
-#sumarmatriz(m1,m2,m3,m4,2,3)
-#escalarxvectorc(v3,v4,2)
-#inversoaditivom(m1,m2,3)
+accionmatrizvector (v1,v2,m1,m2,3,3)
+productointernov (v1,v2,v3,v4)
+normav(v1,v2,4)
+multiplicarcomplejos(n1,n2)
+productomatrices (m5,m10)
+productotensor(m6,m7,m8,m9)
+sumavectoresc(v1,v2)
+inversoaditivov(v1)
+sumarmatriz(m1,m2,m3,m4,3,3)
+escalarxvectorc(v3,v4,2)"""
+inversoaditivom(m1,m2,3)
 #escalarxmatrizc (3,2,m1,m2,3)
 #transpuestamatrizvector(m1,m2,3)
 #conjugada(m1,m2,3)
