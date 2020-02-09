@@ -14,10 +14,10 @@ class TestStringMethods(unittest.TestCase):
         v = (6,3)
         d = (2,1)
         self.assertEqual(multiplicarcomplejos(v,d), (9,15))
-    def test_multicomplejos(self):
+    def test_multiplicarcomplejos(self):
         v = (-2,1)
         d = (1,2)
-        self.assertEqual(multicomplejos(v,d), (-4, 0))
+        self.assertEqual(multiplicarcomplejos(v,d), (-4, 0))
     def test_divcomplejos(self):
         v = (3,5)
         d = (3,2)
@@ -114,21 +114,26 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(inversoaditivom(m1,m2,3), ([[-2, -3, -4], [-5, -6, -7], [-1, -2, -3]],
 [[-5, -9, -8], [-1, -3, -7], [-4, -3, -2]]))
         
-    def test_conversioncap(self):
-        d = (2,4)
-        self.assertEqual(conversioncap(d), (10.0, 1.1071487177940906))
+    def test_escalarxmatrizc(self):
+        m1 = [[2,3,4],[5,6,7],[1,2,3]]
+        m2 = [[5,9,8],[1,3,7],[4,3,2]]
+        self.assertEqual(escalarxmatrizc(3,2,m1,m2,3), ([(-4, 32), (7, 35), (5, 12)]))
         
-    def test_conversioncap(self):
-        d = (2,4)
-        self.assertEqual(conversioncap(d), (10.0, 1.1071487177940906))
+    def test_transpuestamatrizvector(self):
+        m1 = [[2,3,4],[5,6,7],[1,2,3]]
+        m2 = [[5,9,8],[1,3,7],[4,3,2]]
+        self.assertEqual(transpuestamatrizvector(m1,m2,3), ([[2, 5, 1], [3, 6, 2], [4, 7, 3]], [[5, 1, 4], [9, 3, 3], [8, 7, 2]]))
         
-    def test_conversioncap(self):
-        d = (2,4)
-        self.assertEqual(conversioncap(d), (10.0, 1.1071487177940906))
+    def test_conjugada(self):
+        m1 = [[2,3,4],[5,6,7],[1,2,3]]
+        m2 = [[5,9,8],[1,3,7],[4,3,2]]
+        self.assertEqual(conjugada(m1,m2,3), ([[-5, -9, -8], [-1, -3, -7], [-4, -3, -2]]))
         
-    def test_conversioncap(self):
-        d = (2,4)
-        self.assertEqual(conversioncap(d), (10.0, 1.1071487177940906))
+    def test_adjuntamatriz(self):
+        m1 = [[2,3,4],[5,6,7],[1,2,3]]
+        m2 = [[5,9,8],[1,3,7],[4,3,2]]
+        self.assertEqual(adjuntamatriz(m1,m2,3), ([[[2, 5, 1], [3, 6, 2], [4, 7, 3]]],
+[[[-5, -1, -4], [-9, -3, -3], [-8, -7, -2]]]))
     
 
     

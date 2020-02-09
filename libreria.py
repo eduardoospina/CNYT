@@ -125,6 +125,7 @@ def transpuestamatrizvector(a,d,m):
                 menor2.append(d[j][i])
         transr.append(menor1)
         transi.append(menor2)
+    print(transr,transi)
     return(transr, transi)  
 
 def conjugada (a,b,m):
@@ -136,6 +137,7 @@ def conjugada (a,b,m):
         c = b[i][j]*-1
         menor.append(c)
     conjugada.append(menor)
+  print (conjugada)
   return conjugada
 def adjuntamatriz(a,b,m):
     #a parte real matriz, b parte imaginaria, cosa de matriz
@@ -337,10 +339,10 @@ productomatrices (m5,m10)
 productotensor(m6,m7,m8,m9)
 sumavectoresc(v1,v2)
 inversoaditivov(v1)
-sumarmatriz(m1,m2,m3,m4,3,3)
-escalarxvectorc(v3,v4,2)"""
+sumarmatriz(m1,m2,m3,m4,3,3)s
+escalarxvectorc(v3,v4,2)
 inversoaditivom(m1,m2,3)
-#escalarxmatrizc (3,2,m1,m2,3)
-#transpuestamatrizvector(m1,m2,3)
-#conjugada(m1,m2,3)
-#adjuntamatriz(m1,m2,3)
+escalarxmatrizc (3,2,m1,m2,3)
+transpuestamatrizvector(m1,m2,3)
+conjugada(m1,m2,3)
+adjuntamatriz(m1,m2,3)"""
