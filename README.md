@@ -7,6 +7,9 @@
 
 ### para el desarrollo del programa lo que se realizo fue primero leer y tener claro los conceptos que se requieren acerca de numero complejos y sus operaciones, despues se definieron cada una de las funciones de operacion de numeros complejos en un mismo archivo .py para tener un acceso rapido y sencillo a la libreria de numeros compolejos, despues de que se definio la parte de las operaciones de los numeros, se definen las operaciones de vectores que estan conpuestos con numeros complejos, despues, al ya tener las operaciones de vectores, se definen las funciones de matrices compuestas por numeros complejos, y por ultimo, se definen las operacion de vectores con matrices.
 
+## prerequisitos e instalacion
+
+### el unico prerequisito es tener python instalado y la intalacion solo requiere descaragr los archivos y utilizarlos.
 
 ## Construido con 
 
