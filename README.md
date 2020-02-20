@@ -10,9 +10,9 @@
 ## funciones incluidas 
 ### en la parte de numeros complejos se incluyen: 
     
-   ### 1. Suma
-   ### 2. Producto
-   ### 3. Resta
+   1. Suma
+   2. Producto
+   3. Resta
    4. División
    5. Módulo
    6. Conjugado
