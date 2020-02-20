@@ -34,7 +34,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(conjugado(v), (2,-3))
     def test_fase(self):
         d = (1,1)
-        self.assertEqual(fase(d), 1)
+        self.assertEqual(fase(d), 0.79)
     def test_conversioncap(self):
         d = (2,4)
         self.assertEqual(conversioncap(d), (10.0, 1.1071487177940904))

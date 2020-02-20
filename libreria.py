@@ -1,5 +1,6 @@
 import math
 from sys import stdin
+
 def sumacomplejos(a,b):
     a = (a[0]+b[0],a[1]+b[1])
     return a
@@ -32,7 +33,14 @@ def conversioncap(a):
     fin = (p,q)
     return fin
 def fase(a):
-    return a[1]
+    b = (a[0]**2) + (a[1]**2)
+    c = round(math.sqrt(b),2)
+    d = a[1]/a[0]
+    e = round(math.atan(d),2)
+    f = (c, e)
+    print (f[1])
+    return f[1]
+
 def prettyprintingv(a):
     ini = a[0:len(a)//2]
     mita = a[len(a)//2:]
@@ -327,7 +335,7 @@ m10 = [[(1,0),(2,0)],[(3,0),(4,0)]]
 m11 = [[(0,0),(0,0)],[(0,0),(0,0)]]
 m12 = [[(0,0),(0,0)],[(0,0),(0,0)]]
 
-
+fase((1,1))
 """esunitaria(m1,m2,3)
 eshermitiana(m1,m2,3)
 distanciavectores(v1,v2,v3,v4)
