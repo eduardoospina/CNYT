@@ -28,7 +28,7 @@ def modulo(a):
     modul = (((a[0]**2)+(a[1]**2))**1/2)
     return modul
 def conversioncap(a):
-    q = math.atan(a[1]/a[0])
+    q = math.atan2((a[1]/a[0]),1)
     p = modulo (a)
     fin = (p,q)
     return fin
