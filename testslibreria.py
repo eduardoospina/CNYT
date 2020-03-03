@@ -43,7 +43,7 @@ class TestStringMethods(unittest.TestCase):
         v2 = [9,3,6,3]
         v3 = [3,2,4,3]
         v4 = [5,6,7,5]
-        self.assertEqual(distanciavectores(v1,v2,v3,v4), (-70, 151))
+        self.assertEqual(distanciavectores(v1,v2), (16, 0))
         
     def test_esunitaria(self):
         m1 = [[2,3,4],[5,6,7],[1,2,3]]
@@ -56,23 +56,23 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(eshermitiana(m1,m2,3), (0))
         
     def test_accionmatrizvector (self):
-        v1 = [6,0,5,4]
-        v2 = [9,3,6,3]
-        m1 = [[2,3,4],[5,6,7],[1,2,3]]
-        m2 = [[5,9,8],[1,3,7],[4,3,2]]
-        self.assertEqual(accionmatrizvector(v1,v2,m1,m2,3,3), ([[48, 81, 84], [15, 18, 21], [26, 27, 28]]))
+        v1 = [3,0,5,4,0]
+        v2 = [1,2,3,6,0]
+        m1 = [[2,3,4,3,3],[5,6,7,4,5],[1,2,3,6,7],[1,2,3,3,4],[1,2,3,7,8]]
+        m2 = [[2,1,1,0,0],[1,1,-1,0,0],[1,1,1,0,0],[1,2,3,0,0],[1,2,3,0,0]]
+        self.assertEqual(accionmatrizvector(v1,v2,m1,m2), (([31, 66, 36, 16, 32], [49, 60, 58, 50, 74])))
         
     def test_productointernov(self):
         v1 = [6,0,5,4]
         v2 = [9,3,6,3]
         v3 = [3,2,4,3]
         v4 = [5,6,7,5]
-        self.assertEqual(productointernov(v1,v2,v3,v4), (9, 6))
+        self.assertEqual(productointernov(v1,v2), (96, -21))
         
     def test_normav(self):
         v1 = [6,0,5,4]
         v2 = [9,3,6,3]
-        self.assertEqual(normav(v1,v2,4), (-65, 168))
+        self.assertEqual(normav(v1), (-5, -60))
         
     def test_productomatrices(self):
         m5 = [[(6,0),(-1,0)],[(3,0),(-1,0)]]

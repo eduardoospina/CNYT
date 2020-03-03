@@ -222,7 +222,7 @@ def distanciavectores(v1,v2):
     print ((v4,"i",")**(1/2))"))
     return v4
 
-def esunitaria(a,b):
+def esunitaria(a,b,m):
     # a parte real, b parte imaginaria, m tamaño
     c,d = adjuntamatriz(a,b,m)
     uni = []
@@ -313,6 +313,7 @@ m5 = [[(6,0),(-1,0)],[(3,0),(-1,0)]]
 m10 = [[(1,0),(2,0)],[(3,0),(4,0)]]
 m11 = [[(0,0),(0,0)],[(0,0),(0,0)]]
 m12 = [[(0,0),(0,0)],[(0,0),(0,0)]]
+
 
 #productointernov (v1,v2)
 #normav(v1)
