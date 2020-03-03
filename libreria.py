@@ -170,80 +170,59 @@ def productomatrices (a,b):
     print ( producto )
     return producto
 
-def accionmatrizvector (a,b,c,d,m,n):
+def accionmatrizvector (a,b,c,d):
     #m numero columnas vector, n numero filas matriz, a y c vector real, b y d matriz y vector imag
-    if ((m == n) == False):
+    if ((len(a) == len(c)) == False):
         print ( "no se puede realizar")
     else :
         n3 = []
-        n4 = []
-        for i in range(m):
+        n6 = []
+        n4 = 0
+        n5 = 0
+        for i in range(0,len(c)):
             n1 = []
             n2 = []
-            for j in range(n):
-                a1 = ((a[i]*c[i][j])-(b[i]*d[i][j]),((a[i]*d[i][j])+(b[i]*c[i][j])))
+            for j in range(0,len(a)):
+                a1 = ((a[j]*c[i][j])-(b[j]*d[i][j]),((a[j]*d[i][j])+(b[j]*c[i][j])))
                 n1.append(a1[0])
                 n2.append(a1[1])
-            n3.append(n1)
-            n4.append(n2)
-    print(n3)
-    print(n4)
-    return n4      
+                n4 += (n1[j])
+                n5 += (n2[j])
+            n3.append(n4)
+            n6.append(n5)
+            n4 = 0
+            n5 = 0
+    return (n3,n6)      
         
-def productointernov (a,b,c,d):
-    #a y c vector real , b y d vector ima
+def productointernov (v1, v2):
+    #v1, v2 vector primera parte real segunda imaginaria
+    n_n = [0, 0]
     n1 = []
-    n2 = []
-    for i in range (len(a)):
-        e = ((a[i]*c[i])-(b[i]*d[i]),((a[i]*d[i])+(b[i]*c[i])))
-        n1.append(c[0])
-        n2.append(c[1])
-    f = n1[0] + n1[1]
-    g = n2[0] + n2[1]
-    for i in range (2,((len(a)-1))):
-        f = f + n1[i]
-        g = g + n2[i]
-    c = ((f,g))
-    print (c)
-    return c
-def normav(a,b,m):
+    for i in range (len(v1)//2):
+        v1[i+(len(v1)//2)] = v1[ i + (len(v1)//2)] * -1 
+    for i in range (len(v1)//2):
+        e = (v1[i]*v2[i]-v1[i + (len(v1)//2)]*v2[i + (len(v1)//2)]),(v1[i + (len(v1)//2)]*v2[i]+v1[i]*v2[i + (len(v1)//2)])
+        n1.append(e)
+    for i in range (len(n1)):
+        n_n = sumacomplejos(n_n, n1[i])
+    print(n_n)
+    return n_n
+def normav(v1):
     #a vector real, b vector ima, m tamaño
-    norma = []
-    norma1 = []
-    for i in range (len(a)):
-        c = ((a[i]*a[i])-(b[i]*b[i]),((a[i]*b[i])+(b[i]*a[i])))
-        norma.append(c[0])
-        norma1.append(c[1])
-    d = norma[0] + norma[1]
-    e = norma1[0] + norma1[1]
-    for i in range (2,m-1):
-        d = d + norma[i]
-        e = e + norma1[i]
-    c = ((d,e))
-    print ("(",d,"+",e,"i",")**(1/2))")
-    print(c)
-    return (c)
+    n1 = productointernov(v1,v1)
+    print ((n1,"i",")**(1/2))"))
+    return (n1)
 
-def distanciavectores(a,b,c,d):
-    # a y c vectores reales, b y d vectores imag
-    a1 = []
-    a2 = []
-    a5 = []
-    a4 = []
-    for i in range (len(a)):
-        e = (a[i] - c[i])
-        f = (b[i] - d[i])
-        a1.append(e)
-        a2.append(f)
-    for i in range (len(a)):
-        a5.append(((a[i]*c[i])-(b[i]*d[i]),((a[i]*d[i])+(b[i]*c[i]))))
-    a4 = sumacomplejos(a5[0],a5[1])
-    for i in range(2,len(a)):
-        a4 = sumacomplejos(a4,a5[i])             
-    print(a4)
-    return a4
+def distanciavectores(v1,v2):
+    # v1, v2 vectores
+    v3=[]
+    for i in range (len(v1)):
+        v3.append(v1[i]-v2[i])
+    v4 = productointernov(v3, v3)
+    print ((v4,"i",")**(1/2))"))
+    return v4
 
-def esunitaria(a,b,m):
+def esunitaria(a,b):
     # a parte real, b parte imaginaria, m tamaño
     c,d = adjuntamatriz(a,b,m)
     uni = []
@@ -315,15 +294,15 @@ def simulador1():
     print (gamma)
 
 #vectores primera mitad real segunda mitad
-v1 = [6,0,5,4]
-v2 = [9,3,6,3]
+v1 = [3,0,5,4,0]
+v2 = [1,2,3,6,0]
 v3 = [3,2,4,3]
 v4 = [5,6,7,5]
 n = 4
 n1 = (2,3)
 n2 = (4,6)
-m1 = [[2,3,4],[5,6,7],[1,2,3]]
-m2 = [[5,9,8],[1,3,7],[4,3,2]]
+m1 = [[2,3,4,3,3],[5,6,7,4,5],[1,2,3,6,7],[1,2,3,3,4],[1,2,3,7,8]]
+m2 = [[2,1,1,0,0],[1,1,-1,0,0],[1,1,1,0,0],[1,2,3,0,0],[1,2,3,0,0]]
 m3 = [[4,3,5],[5,9,7],[8,4,2]]
 m4 = [[5,3,1],[2,4,5],[2,3,4]]
 m6 = [[0.0,1.0],[1.0,0.0]]
@@ -335,13 +314,17 @@ m10 = [[(1,0),(2,0)],[(3,0),(4,0)]]
 m11 = [[(0,0),(0,0)],[(0,0),(0,0)]]
 m12 = [[(0,0),(0,0)],[(0,0),(0,0)]]
 
-fase((1,1))
-"""esunitaria(m1,m2,3)
+#productointernov (v1,v2)
+#normav(v1)
+#distanciavectores(v1,v2)
+accionmatrizvector (v1,v2,m1,m2)
+"""fase((1,1))
+esunitaria(m1,m2,3)
 eshermitiana(m1,m2,3)
 distanciavectores(v1,v2,v3,v4)
-accionmatrizvector (v1,v2,m1,m2,3,3)
-productointernov (v1,v2,v3,v4)
-normav(v1,v2,4)
+
+
+
 multiplicarcomplejos(n1,n2)
 productomatrices (m5,m10)
 productotensor(m6,m7,m8,m9)
