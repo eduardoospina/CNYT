@@ -2,13 +2,6 @@ from libreria import *
 import numpy as np
 import matplotlib.pyplot as plt
 
-v1 = [True,False,False,False,False,True]
-v2 = [0,0,0,0,0,0]
-m1 = [[False,False,False,True,False,True],[True,True,False,True,False,True],[True,True,False,True,False,True],[True,True,False,True,False,True],[False,False,False,True,False,True],[False,False,False,True,False,True]]
-m2 = [[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]
-m = 6
-n = 6
-c1 = 10
 def canicasbooleanos (m1, m2, v1, v2, c1):
     # m1 matriz real, m2 matriz ima, v1 vectpor real, v2 vector ima, c1 # clicks
     for i in range (c1):
@@ -26,9 +19,46 @@ def canicasbooleanos (m1, m2, v1, v2, c1):
     print(v1)
     print(v2)
     return(v1, v2)
-def múltiplesrendijasclásicoprobabilístico(m,n):
-    return(1)
-def multiplesrendijascuantiuco(m,n):
+def múltiplesrendijasclásicoprobabilístico(rendijas, blancos, m):
+    matriz = [[[0,0] for j in range (rendijas + blancos +1)]for i in range (rendijas + blancos +1)]
+    contador = blancos//2
+    for i in range (rendijas):
+        matriz[i+1] = 1/rendijas
+    for i in range ((rendijas + blancos +1)):
+        for j in range ( rendijas + blancos +1):
+            if j >= (rendijas + 1):
+                matriz[j][j] = 1
+            if contador > 0 and (rendijas + 1)<(rendijas + blancos +1):
+                matriz[(rendijas + blancos )][1]= 1/(blancos//2)
+            if j ==1:
+                for i in range ((rendijas + blancos +1)):
+                    for j in range ( rendijas + blancos +1):
+                        if j >= (rendijas + 1):
+                            matriz[j][j] = 1
+                        if contador > 0 and (rendijas + 1)<(rendijas + blancos +1):
+                            matriz[(rendijas + blancos )][1]= 1/(4)
+    print (matriz)
+    return(m)
+def multiplesrendijascuantico(rendijas, blancos,m):
+    matriz = [[[0,0] for j in range (rendijas + blancos +1)]for i in range (rendijas + blancos +1)]
+    contador = blancos//2
+    for i in range (rendijas):
+        matriz[i+1] = 1/rendijas
+    for i in range ((rendijas + blancos +1)):
+        for j in range ( rendijas + blancos +1):
+            if j >= (rendijas + 1):
+                matriz[j][j] = 1
+            if contador > 0 and (rendijas + 1)<(rendijas + blancos +1):
+                matriz[(rendijas + blancos )][1]= 1/(blancos//2)
+            if j ==1:
+                for i in range ((rendijas + blancos +1)):
+                    for j in range ( rendijas + blancos +1):
+                        if j >= (rendijas + 1):
+                            matriz[j][j] = 1
+                        if contador > 0 and (rendijas + 1)<(rendijas + blancos +1):
+                            matriz[(rendijas + blancos )][1]= 1/(4)
+    print (matriz)
+    return(m)
     return(2)
 def grafico (v1):
     datos = len(v1)
@@ -41,5 +71,7 @@ def grafico (v1):
     
 
 
+#multiplesrendijascuantico(2,4,"((1+i)/2)")
+#múltiplesrendijasclásicoprobabilístico(2,4,1/2)
 #grafico(v1)  
 #canicasbooleanos (m1, m2, v1, v2, c1)

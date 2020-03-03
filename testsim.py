@@ -10,36 +10,27 @@ class simulaciondeloclasicoalocuantico(unittest.TestCase):
         m1 = [[False,False,False,True,False,True],[True,True,False,True,False,True],[True,True,False,True,False,True],[True,True,False,True,False,True],[False,False,False,True,False,True],[False,False,False,True,False,True]]
         m2 = [[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]
         
-        self.assertEqual(experimentBooleanMatrix( m1, m2, v1, v2, 1 ),
+        self.assertEqual(canicasbooleanos( m1, m2, v1, v2, 1 ),
                          [True, True, True, True, True, True],[False, False, False, False, False, False] )
 
-        self.assertEqual(experimentBooleanMatrix( m1, m2, v1, v2, 3 ),
+        self.assertEqual(canicasbooleanos( m1, m2, v1, v2, 3 ),
                          [True, True, True, True, True, True],[False, False, False, False, False, False] )
 
-        self.assertEqual(experimentBooleanMatrix( m1, m2, v1, v2, 5 ),
+        self.assertEqual(canicasbooleanos( m1, m2, v1, v2, 5 ),
                          [True, True, True, True, True, True],[False, False, False, False, False, False] )
 
-    def testMultipleSlitExperiment( self ):
+    def test_2( self ):
         
-        self.assertEqual( probabilisticSystem(  matrix[:], vectIni[:], 2 ),  [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.16666666666666666, 0.0],
-                                                    [0.16666666666666666, 0.0], [0.3333333333333333, 0.0],
-                                                    [0.16666666666666666, 0.0], [0.16666666666666666, 0.0]] )
+        self.assertEqual( múltiplesrendijasclásicoprobabilístico( 2, 4, 1/2 ),  1/2 )
        
-    def testMultipleSlitQuantumExperiment( self ):
+    def test_3( self ):
         
-        self.assertEqual( multipleSlitQuantumExperiment(  matrix[:], vectIni[:], 1 ), [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-                                                                             [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-                                                                             [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-                                                                             [0.1666666666666667, 0.3333333333333334, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
-                                                                             [0.1666666666666667, 0.3333333333333334, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0],
-                                                                             [0.0, 0.3333333333333334, 0.3333333333333334, 0.0, 0.0, 1.0, 0.0, 0.0],
-                                                                             [0.1666666666666667, 0.0, 0.3333333333333334, 0.0, 0.0, 0.0, 1.0, 0.0],
-                                                                             [0.1666666666666667, 0.0, 0.3333333333333334, 0.0, 0.0, 0.0, 0.0, 1.0]])
+        self.assertEqual( multiplesrendijascuantico(2,4,"((1+i)/2)") , "((1+i)/2)")
 
-    def testGraphProbabilitiesVector( self ):
-         graphProbabilitiesVector( [ [0,0] ,[0,0]  ,[0,0] ,
-                                     [1/3,0],[1/6,0], [1/6,0],
-                                     [1/6,0],[1/3,0] ]  )
+    def testGrafico( self ):
+         grafico( [ [0,0] ,[0,0]  ,[0,0] ,
+                    [1/3,0],[1/6,0], [1/6,0],
+                    [1/6,0],[1/3,0] ]  )
        
        
 if __name__ == '__main__':
