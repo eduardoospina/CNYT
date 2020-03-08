@@ -1,37 +1,68 @@
 import unittest
 from simulacion_de_lo_clasico_a_lo_cuantico import *
-
-
-class simulaciondeloclasicoalocuantico(unittest.TestCase):
-   
-    def test_1( self  ):
-        v1 = [True,False,False,False,False,True]
-        v2 = [0,0,0,0,0,0]
-        m1 = [[False,False,False,True,False,True],[True,True,False,True,False,True],[True,True,False,True,False,True],[True,True,False,True,False,True],[False,False,False,True,False,True],[False,False,False,True,False,True]]
-        m2 = [[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]
-        
-        self.assertEqual(canicasbooleanos( m1, m2, v1, v2, 1 ),
-                         [True, True, True, True, True, True],[False, False, False, False, False, False] )
-
-        self.assertEqual(canicasbooleanos( m1, m2, v1, v2, 3 ),
-                         [True, True, True, True, True, True],[False, False, False, False, False, False] )
-
-        self.assertEqual(canicasbooleanos( m1, m2, v1, v2, 5 ),
-                         [True, True, True, True, True, True],[False, False, False, False, False, False] )
-
-    def test_2( self ):
-        
-        self.assertEqual( múltiplesrendijasclásicoprobabilístico( 2, 4, 1/2 ),  1/2 )
-       
-    def test_3( self ):
-        
-        self.assertEqual( multiplesrendijascuantico(2,4,"((1+i)/2)") , "((1+i)/2)")
-
-    def testGrafico( self ):
-         grafico( [ [0,0] ,[0,0]  ,[0,0] ,
-                    [1/3,0],[1/6,0], [1/6,0],
-                    [1/6,0],[1/3,0] ]  )
-       
-       
+class TestStringMethods(unittest.TestCase):
+    def test_canicas_con_coeficiente_booleanos(self):
+        m1 = [[False,False,False,False,False,False],[False,False,False,False,False,False],[False,True,False,False,False,True],[False,False,False,True,False,False],[False,False,True,False,False,False],[True,False,False,False,True,False]]
+        v1 = [True,False,False,False,False,False]
+        n = 1
+        self.assertEqual(canicas(m1,v1,n),([False, False, False, False, False, True]))
+    def test_canicas_con_coeficiente_booleanos1(self):
+        m1 = [[False,False,False,False,False,False],[False,False,False,False,False,False],[False,True,False,False,False,True],[False,False,False,True,False,False],[False,False,True,False,False,False],[True,False,False,False,True,False]]
+        v1 = [True,False,False,False,False,False]
+        n = 1
+        self.assertEqual(canicas(m1,v1,3),([False, False, False, False, False, True]))
+    def test_canicas_con_coeficiente_booleanos2(self):
+        m1 = [[False,False,False,False,False,False],[False,False,False,False,False,False],[False,True,False,False,False,True],[False,False,False,True,False,False],[False,False,True,False,False,False],[True,False,False,False,True,False]]
+        v1 = [True,False,False,False,False,False]
+        n = 1
+        self.assertEqual(canicas(m1,v1,5),([False, False, False, False, False, True]))
+    def test_cuantico(self):
+        m = [[(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(1/(2**(1/2)),0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(1/(2**(1/2)),0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(-1/(6**(1/2)),1/(6**(1/2))),(0,0),(1,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(-1/(6**(1/2)),-1/(6**(1/2))),(0,0),(0,0),(1,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(1/(6**(1/2)),-1/(6**(1/2))),(-1/(6**(1/2)),1/(6**(1/2))),(0,0),(0,0),(1,0),(0,0),(0,0)]
+            ,[(0,0),(0,0),(-1/(6**(1/2)),-1/(6**(1/2))),(0,0),(0,0),(0,0),(1,0),(0,0)]
+             ,[(0,0),(0,0),(1/(6**(1/2)),-1/(6**(1/2))),(0,0),(0,0),(0,0),(0,0),(1,0)]]
+        e = [(1,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+        self.assertEqual(cuantico(m,e,1),([[[0, 0]], [[0.7071067811865475, 0.0]], [[0.7071067811865475, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]]]))
+    def test_cuantico2(self):
+        m = [[(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(1/(2**(1/2)),0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(1/(2**(1/2)),0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(-1/(6**(1/2)),1/(6**(1/2))),(0,0),(1,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(-1/(6**(1/2)),-1/(6**(1/2))),(0,0),(0,0),(1,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(1/(6**(1/2)),-1/(6**(1/2))),(-1/(6**(1/2)),1/(6**(1/2))),(0,0),(0,0),(1,0),(0,0),(0,0)]
+            ,[(0,0),(0,0),(-1/(6**(1/2)),-1/(6**(1/2))),(0,0),(0,0),(0,0),(1,0),(0,0)]
+             ,[(0,0),(0,0),(1/(6**(1/2)),-1/(6**(1/2))),(0,0),(0,0),(0,0),(0,0),(1,0)]]
+        e = [(1,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+        self.assertEqual(cuantico(m,e,3),([[[0, 0]], [[0.7071067811865475, 0.0]], [[0.7071067811865475, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]]]))
+    def test_clásico(self):
+        m3 = [[(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(1/(2),0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(1/(2),0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(1/3,0),(0,0),(1,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(1/3,0),(0,0),(0,0),(1,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(1/3,0),(1/3,0),(0,0),(0,0),(1,0),(0,0),(0,0)]
+            ,[(0,0),(0,0),(1/3,0),(0,0),(0,0),(0,0),(1,0),(0,0)]
+             ,[(0,0),(0,0),(1/3,0),(0,0),(0,0),(0,0),(0,0),(1,0)]]
+        e = [(1,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+        self.assertEqual(clasico(m3,e,1),([[[0, 0]], [[0.5, 0.0]], [[0.5, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]]]))
+    def test_clásico2(self):
+        m3 = [[(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(1/(2),0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(1/(2),0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(1/3,0),(0,0),(1,0),(0,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(1/3,0),(0,0),(0,0),(1,0),(0,0),(0,0),(0,0)]
+            ,[(0,0),(1/3,0),(1/3,0),(0,0),(0,0),(1,0),(0,0),(0,0)]
+            ,[(0,0),(0,0),(1/3,0),(0,0),(0,0),(0,0),(1,0),(0,0)]
+             ,[(0,0),(0,0),(1/3,0),(0,0),(0,0),(0,0),(0,0),(1,0)]]
+        e = [(1,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0),(0,0)]
+        self.assertEqual(clasico(m3,e,3),([[[0, 0]], [[0.5, 0.0]], [[0.5, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]], [[0.0, 0.0]]]))
+    
+    def test_probabilidad(self):
+        v = [[1/4,0],[1/6,0],[1/3,0],[1/6,0],[1/6,0]]
+        Probabilidadestado(v)
 if __name__ == '__main__':
     unittest.main()

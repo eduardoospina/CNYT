@@ -1,77 +1,82 @@
-from libreria import *
+from sys import stdin
+
+def prettyprintingcanicas(vector):
+    for i in range(len(vector)):
+        for j in range(1):
+            print(vector[i])
+def prettyprintingscuantico(vector):
+    for i in range(len(vector)):
+        for j in range(1):
+            print(vector[i][j])
+def matrizvvectorb(m1,v1):
+    conta = 1
+    suma = 0
+    matriz_Vector = [0 for i in range(len(m1))]
+    for i in range(len(m1)):
+        for j in range(len(m1)):
+            for k in range(len(m1[0])):
+                suma = suma + m1[i][k] * v1[k]
+            if suma == 0:
+                matriz_Vector[i] = False
+            else:
+                matriz_Vector[i] = True
+            suma = 0
+            break                
+    return matriz_Vector
+def matrizvvectorr(m1,v1):
+    conta = 1
+    matriz = [[[0,0] for j in range(1)] for i in range(len(m1))]
+    for i in range(len(m1)):
+        for j in range(len(v1[0])):
+            for k in range(len(m1[0])):
+                matriz[i][j][0] = matriz[i][j][0] + (m1[i][k][0] * v1[k][j] - m1[i][k][1]*v1[k][j+conta])
+                matriz[i][j][1] = matriz[i][j][1] + (m1[i][k][1] * v1[k][j] + m1[i][k][0]*v1[k][j+conta])
+            break
+    return(matriz)
+def canicas(m1,v1,n):
+    if len(m1) == 0 or len(v1) == 0:
+        print("error.")
+    elif len(m1[0]) != len(v1):
+        print("error.")
+    else:
+        conta = 1
+        while conta <= n:
+            multi = matrizvvectorb(m1,v1)
+            conta += 1
+        prettyprintingcanicas(multi)
+        return(multi)
+def cuantico(m,e,n):
+    if len(m) == 0 or len(e) == 0:
+        print("error.")
+    elif len(m[0]) != len(e):
+        print("error.")
+    else:
+        conta = 1
+        while conta <= n:
+            multi = matrizvvectorr(m,e)
+            conta += 1
+        prettyprintingscuantico(multi)
+    return(multi)
+def clasico(m,e,n):
+    if len(m) == 0 or len(e) == 0:
+        print("error.")
+    elif len(m[0]) != len(e):
+        print("error.")
+    else:
+        conta = 1
+        while conta <= n:
+            multi = matrizvvectorr(m,e)
+            conta += 1
+        prettyprintingscuantico(multi)
+    print(multi)
+    return(multi)
+import matplotlib.pyplot as plot
 import numpy as np
-import matplotlib.pyplot as plt
-
-def canicasbooleanos (m1, m2, v1, v2, c1):
-    # m1 matriz real, m2 matriz ima, v1 vectpor real, v2 vector ima, c1 # clicks
-    for i in range (c1):
-        if i <= c1:
-            v1, v2 = accionmatrizvector(v1,v2,m1,m2)
-        for j in range (len(v1)):
-            if v1[j] >= 1:
-                v1[j] = True
-            else:
-                 v1[j] = False
-            if v2[j] >= 1:
-                v2[j] = True
-            else:
-                v2[j] = False
-    print(v1)
-    print(v2)
-    return(v1, v2)
-def múltiplesrendijasclásicoprobabilístico(rendijas, blancos, m):
-    matriz = [[[0,0] for j in range (rendijas + blancos +1)]for i in range (rendijas + blancos +1)]
-    contador = blancos//2
-    for i in range (rendijas):
-        matriz[i+1] = 1/rendijas
-    for i in range ((rendijas + blancos +1)):
-        for j in range ( rendijas + blancos +1):
-            if j >= (rendijas + 1):
-                matriz[j][j] = 1
-            if contador > 0 and (rendijas + 1)<(rendijas + blancos +1):
-                matriz[(rendijas + blancos )][1]= 1/(blancos//2)
-            if j ==1:
-                for i in range ((rendijas + blancos +1)):
-                    for j in range ( rendijas + blancos +1):
-                        if j >= (rendijas + 1):
-                            matriz[j][j] = 1
-                        if contador > 0 and (rendijas + 1)<(rendijas + blancos +1):
-                            matriz[(rendijas + blancos )][1]= 1/(4)
-    print (matriz)
-    return(m)
-def multiplesrendijascuantico(rendijas, blancos,m):
-    matriz = [[[0,0] for j in range (rendijas + blancos +1)]for i in range (rendijas + blancos +1)]
-    contador = blancos//2
-    for i in range (rendijas):
-        matriz[i+1] = 1/rendijas
-    for i in range ((rendijas + blancos +1)):
-        for j in range ( rendijas + blancos +1):
-            if j >= (rendijas + 1):
-                matriz[j][j] = 1
-            if contador > 0 and (rendijas + 1)<(rendijas + blancos +1):
-                matriz[(rendijas + blancos )][1]= 1/(blancos//2)
-            if j ==1:
-                for i in range ((rendijas + blancos +1)):
-                    for j in range ( rendijas + blancos +1):
-                        if j >= (rendijas + 1):
-                            matriz[j][j] = 1
-                        if contador > 0 and (rendijas + 1)<(rendijas + blancos +1):
-                            matriz[(rendijas + blancos )][1]= 1/(4)
-    print (matriz)
-    return(m)
-    return(2)
-def grafico (v1):
-    datos = len(v1)
-    eje_x = np.array([eje_x for x in range(datos)])
-    eje_y = np.array([round(v1[eje_x][0]*100, 2) for i in range(datos)])
-
-    plot.bar(eje_x, eje_y, color = "f", align = "center")
-    plot.title("vector probabilidad")
+def Probabilidadestado(v):
+    unidades = len(v)
+    x = np.array([ x for x in range(unidades)])
+    y = np.array([round(v[x][0]*100,2) for x in range(unidades)])
+    plot.bar( x,y , color ='b', align='center')
+    plot.title('estado')
     plot.show()
-    
 
-
-#multiplesrendijascuantico(2,4,"((1+i)/2)")
-#múltiplesrendijasclásicoprobabilístico(2,4,1/2)
-#grafico(v1)  
-#canicasbooleanos (m1, m2, v1, v2, c1)
