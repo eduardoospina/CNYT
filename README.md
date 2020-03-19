@@ -23,8 +23,8 @@
    
   ### 1. Adición de vectores complejos.
   ### 2. Inverso (aditivo) de un vector complejo.
-   ###3. Multiplicación de un escalar por un vector complejo.
-   ###4. Adición de matrices complejas.
+  ### 3. Multiplicación de un escalar por un vector complejo.
+  ### 4. Adición de matrices complejas.
   ### 5. Inversa (aditiva) de una matriz compleja.
   ### 6. Multiplicación de un escalar por una matriz compleja.
   ### 7. Transpuesta de una matriz/vector
