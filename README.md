@@ -19,7 +19,7 @@
   ### 7. Conversión entre representaciones polar y cartesiano
   ### 8. Retornar la fase de un número complejo.
    
-### en la parte de matrices y vectores se incluyen: 
+## en la parte de matrices y vectores se incluyen: 
    
   ### 1. Adición de vectores complejos.
   ### 2. Inverso (aditivo) de un vector complejo.
